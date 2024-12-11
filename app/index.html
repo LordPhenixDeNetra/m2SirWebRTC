@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Calling App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> -->
+    <script src="/js/socket.io.js" defer></script>
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+    <main class="main-container">
+        <aside class="caller-list-wrapper">
+            <h1 class="caller-list-heading h-font">Contacts</h1>
+            <ul id="allusers" class="caller-list">
+                <!-- <li>
+                    <span>Rizwan Khan (You)</span>
+                    <button class="call-btn"><img width="20" src="/images/phone.png" alt=""></button>
+                </li> -->
+            </ul>
+        </aside>
+        <section class="video-call-container">
+            <div class="username-input">
+                <input id="username" type="text" placeholder="Enter Username">
+                <button id="create-user">Create</button>
+            </div>
+            <div class="video-streams">
+                
+                <div class="local-video">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                </div>
+                <div class="remote-video">
+                    <video id="remoteVideo" autoplay muted playsinline></video>
+                </div>
+            </div>
+            <div>
+                <button id="end-call-btn" class="call call-disconnect d-none">
+                    <img src="/images/phone-disconnect.png" alt="">
+                </button>
+            </div>
+        </section>
+
+        <section class="chat-container">
+            <div class="chat-messages" id="chatMessages"></div>
+            <form id="chatForm" class="chat-form">
+                <input type="text" id="chatInput" placeholder="Type a message..." required />
+                <button type="submit">Send</button>
+            </form>
+            <div class="fileInput-container">
+                <input type="file" id="fileInput" />    
+            </div>
+            <button id="sendFileButton">Send File</button>
+        </section>
+        
+
+    </main>
+
+    <button class="chat-toggle">
+        <img src="/images/customer-service.png" alt="Toggle chat" width="24" height="24">
+    </button>
+    
+
+</body>
+</html>
