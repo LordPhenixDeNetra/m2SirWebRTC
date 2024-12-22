@@ -1,0 +1,37 @@
+# services:
+#   webrtc-app:
+#     build: .
+#     container_name: webrtc-app
+#     ports:
+#       - "9000:9000"
+#     environment:
+#       - NODE_ENV=production
+#       - STUN_SERVER=stun:stun.l.google.com:19302
+#     restart: unless-stopped
+
+
+
+
+services:
+  webrtc-app:
+    build: .
+    container_name: webrtc-app
+    ports:
+      - "9000:9000"
+    environment:
+      - NODE_ENV=production
+      - STUN_SERVER=stun:stun.l.google.com:19302
+    restart: unless-stopped
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+    depends_on:
+      - webrtc-app
+    restart: unless-stopped

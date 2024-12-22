@@ -1,0 +1,30 @@
+{
+    "family": "webrtc-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::026090516191:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "webrtc-app",
+            "image": "026090516191.dkr.ecr.eu-north-1.amazonaws.com/webrtc-app:latest",
+            "portMappings": [
+                {
+                    "containerPort": 9000,
+                    "hostPort": 9000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/webrtc-app",
+                    "awslogs-region": "eu-north-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ]
+}
